@@ -2,6 +2,7 @@ import WelcomeMessage from './components/WelcomeMessage';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
+import UserProfile from './components/UserProfile';
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -17,6 +18,9 @@ function App() {
         <Header />
         <MainContent />
         <Footer />
+        <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+        <UserProfile name="Bob" age="30" bio="Enjoys cooking and traveling" />
+        <UserProfile name="Charlie" age="22" bio="Passionate about music and art" />
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
