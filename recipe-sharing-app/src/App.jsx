@@ -12,6 +12,8 @@ function App() {
 
   return (
     <>
+    <Router>
+   
       <div style={{ padding: '20px' }}>
       <h1>Recipe Sharing App</h1>
 
@@ -28,7 +30,8 @@ function App() {
         <Route path="/recipes/:id" element={<RecipeDetails />} />
       </Routes>
     </div>
-
+        
+    </Router>
       <div style={{ padding: '20px' }}>
         <h1>Recipe Sharing App</h1>
         <AddRecipeForm />
