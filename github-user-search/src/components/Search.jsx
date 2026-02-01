@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { fetchAdvancedUsers } from "../services/githubService";
+import { fetchUserData, fetchAdvancedUsers } from "../services/githubService";
+
 
 const Search = () => {
   const [username, setUsername] = useState("");
@@ -50,6 +51,23 @@ const Search = () => {
     } finally {
       setLoading(false);
     }
+
+    try {
+    let data;
+    if (location || minRepos) {
+      // advanced search
+      data = await fetchAdvancedUsers(username, location, minRepos, 1);
+      setUsers(data.items);
+    } else {
+      // basic search (Task 1)
+      const user = await fetchUserData(username);
+      setUsers([user]); // wrap in array to match display logic
+    }
+  } catch (err) {
+    setError("Looks like we cant find the user");
+  } finally {
+    setLoading(false);
+  }
   };
 
   return (
