@@ -7,6 +7,9 @@ function UserProfile() {
       mx-auto my-20
       rounded-lg
       shadow-lg
+      hover:shadow-xl
+      transition-shadow
+      duration-300
     ">
       <img
         src="https://via.placeholder.com/150"
@@ -16,14 +19,21 @@ function UserProfile() {
           md:w-36 md:h-36
           rounded-full
           mx-auto
+          hover:scale-110
+          transition-transform
+          duration-300
+          ease-in-out
         "
       />
 
       <h1 className="
         sm:text-lg md:text-xl
         text-blue-800
+        hover:text-blue-500
         my-4
         text-center
+        transition-colors
+        duration-300
       ">
         John Doe
       </h1>
