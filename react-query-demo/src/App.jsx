@@ -3,16 +3,22 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import PostsComponent from "./components/PostsComponent";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+
+const queryClient = new QueryClient();
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <h1>React Query Demo</h1>
-      <PostsComponent />
-      </div>
+      <QueryClientProvider client={queryClient}>
+        <div>
+          <h1>React Query Demo</h1>
+          <PostsComponent />
+        </div>
+      </QueryClientProvider>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
