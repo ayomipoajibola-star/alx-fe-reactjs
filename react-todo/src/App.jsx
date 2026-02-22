@@ -9,8 +9,7 @@ function App() {
 
   return (
     <>
-      <div>
-        <h1>React Todo App</h1>
+      <div className="App">
         <TodoList />
       </div>
 
