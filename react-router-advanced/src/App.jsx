@@ -31,17 +31,7 @@ function App() {
           <Route
             path="/login"
             element={<Login setIsAuthenticated={setIsAuthenticated} />}
-          />
-
-          {/* Protected Route with Nested Routes handled inside Profile.jsx */}
-          <Route
-            path="/profile/*"
-            element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
+          />       
 
           {/* Dynamic Route */}
           <Route path="/blog/:id" element={<BlogPost />} />

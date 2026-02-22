@@ -1,12 +1,12 @@
-function Login({ setIsAuthenticated }) {
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-  };
+import { useAuth } from "../hooks/useAuth";
+
+function Login() {
+  const { login } = useAuth();
 
   return (
     <div>
       <h2>Login Page</h2>
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={login}>Login</button>
     </div>
   );
 }
