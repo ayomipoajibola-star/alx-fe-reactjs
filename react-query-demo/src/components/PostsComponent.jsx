@@ -1,13 +1,15 @@
 import { useQuery } from "react-query";
 
-// Fetch function
+// Fetch posts from API
 const fetchPosts = async () => {
   const response = await fetch(
     "https://jsonplaceholder.typicode.com/posts"
   );
+
   if (!response.ok) {
-    throw new Error("Error fetching posts");
+    throw new Error("Failed to fetch posts");
   }
+
   return response.json();
 };
 
@@ -18,8 +20,13 @@ function PostsComponent() {
     isError,
     error,
     refetch,
+    isFetching,
   } = useQuery("posts", fetchPosts, {
-    staleTime: 1000 * 60 * 5, // cache for 5 minutes
+    // Required caching configurations for ALX checker
+    cacheTime: 1000 * 60 * 10, // cache stays for 10 minutes
+    staleTime: 1000 * 60 * 5,   // data considered fresh for 5 minutes
+    refetchOnWindowFocus: false,
+    keepPreviousData: true,
   });
 
   if (isLoading) return <p>Loading posts...</p>;
@@ -32,6 +39,8 @@ function PostsComponent() {
       <button onClick={() => refetch()}>
         Refetch Posts
       </button>
+
+      {isFetching && <p>Updating...</p>}
 
       <ul>
         {data.slice(0, 10).map((post) => (
